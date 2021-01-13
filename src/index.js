@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+import { createStore } from 'redux';
+import { Provider } from "react-redux";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const rootReducer = (currentState, action) => {return {user: ["trees"]}}
+const store = createStore(rootReducer)
+// const state = store.getState()
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}> 
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 
